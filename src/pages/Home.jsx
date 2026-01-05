@@ -1,4 +1,5 @@
 import HeroCarousel from "../components/HeroCarousel";
+import SearchBar from "../components/SearchBar";
 import "../styles/home.css";
 import { Link } from "react-router-dom";
 
@@ -56,13 +57,13 @@ const articles = [
 export default function Home() {
     return (
         <div className="homePage">
-            {/* HERO */}
             <section className="homeHeroSection">
                 <HeroCarousel />
+                <SearchBar />
             </section>
 
             {/* PACKAGES */}
-            <section className="sectionWrap sectionLight">
+            <section className="sectionWrap sectionLight sectionAfterHero">
                 <div className="wrap">
                     <div className="sectionHead">
                         <h2>Curated packages</h2>
@@ -132,7 +133,7 @@ export default function Home() {
                             <h3>About Roamer</h3>
                             <p>
                                 Roamer makes trip planning simple: discover destinations, compare options,
-                                and book in a few clicks. Authentication and saved trips are coming next.
+                                and book in a few clicks.
                             </p>
                             <Link className="btnPrimary" to="/destinations">
                                 Start exploring
@@ -180,8 +181,7 @@ export default function Home() {
                         <div>
                             <div className="testimonialName">Joseph David</div>
                             <div className="testimonialText">
-                                “Roamer made it ridiculously easy to find a destination and plan the trip.
-                                Clean layout, great packages, and a smooth booking flow.”
+                                “Roamer made it ridiculously easy to find a destination and plan the trip.”
                             </div>
                             <div className="testimonialMeta">Customer</div>
                         </div>
@@ -191,39 +191,41 @@ export default function Home() {
 
             {/* CONTACT */}
             <section className="sectionWrap sectionContact">
-                <div className="wrap">
-                    <div className="split contactSplit">
-                        <div>
-                            <h2 className="contactTitle">Contact us</h2>
-                            <p className="contactSub">Request info or ask about a reservation.</p>
+                <div className="wrap footerWrap">
+                    <div className="footerGrid">
+                        {/* Left info */}
+                        <div className="footerInfo">
+                            <h3>Contact</h3>
+                            <p>Questions or reservations.</p>
 
-                            <div className="contactInfo">
-                                <div><strong>Email:</strong> support@roamer.example</div>
-                                <div><strong>Phone:</strong> +44 0000 000000</div>
+                            <div className="footerMeta">
+                                <span>support@roamer.example</span>
+                                <span>+44 0000 000000</span>
                             </div>
                         </div>
 
-                        <form className="contactCard" onSubmit={(e) => e.preventDefault()}>
-                            <label>
-                                Full name
-                                <input className="field" placeholder="Your name" />
-                            </label>
-                            <label>
-                                Email
-                                <input className="field" placeholder="you@example.com" />
-                            </label>
-                            <label>
-                                Message
-                                <textarea className="field" rows="4" placeholder="Tell us what you need..." />
-                            </label>
-
-                            <button className="btnPrimary" type="submit">Send message</button>
+                        {/* Form */}
+                        <form
+                            className="footerForm"
+                            onSubmit={(e) => e.preventDefault()}
+                        >
+                            <input className="footerField" placeholder="Full name" />
+                            <input className="footerField" placeholder="Email" />
+                            <textarea
+                                className="footerField"
+                                rows="3"
+                                placeholder="Message"
+                            />
+                            <button className="footerBtn">Send</button>
                         </form>
                     </div>
 
-                    <div className="copyright">© {new Date().getFullYear()} Roamer</div>
+                    <div className="footerBottom">
+                        © {new Date().getFullYear()} Roamer
+                    </div>
                 </div>
             </section>
+
         </div>
     );
 }

@@ -6,7 +6,8 @@ const slides = [
         id: "indonesia",
         title: "INDONESIA",
         subtitle: "Breathtaking islands & volcano views",
-        hero: "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        hero:
+            "https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=1600",
         thumbs: [
             "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=800",
             "https://images.pexels.com/photos/3889855/pexels-photo-3889855.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -17,7 +18,8 @@ const slides = [
         id: "thailand",
         title: "THAILAND",
         subtitle: "Temples, beaches, and street food",
-        hero: "https://images.pexels.com/photos/358229/pexels-photo-358229.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        hero:
+            "https://images.pexels.com/photos/358229/pexels-photo-358229.jpeg?auto=compress&cs=tinysrgb&w=1600",
         thumbs: [
             "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=800",
             "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -28,7 +30,8 @@ const slides = [
         id: "bali",
         title: "BALI",
         subtitle: "Turquoise waters & calm escapes",
-        hero: "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        hero:
+            "https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1600",
         thumbs: [
             "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&w=800",
             "https://images.pexels.com/photos/1450360/pexels-photo-1450360.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -43,7 +46,7 @@ export default function HeroCarousel() {
     const dots = useMemo(() => slides.map((s) => s.id), []);
 
     useEffect(() => {
-        const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 4500);
+        const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 5000);
         return () => clearInterval(t);
     }, []);
 
@@ -51,16 +54,27 @@ export default function HeroCarousel() {
         <div className="roamerHeroStage">
             <div className="roamerHeroCard">
                 <div className="roamerTopbar">
-                    <div className="roamerBrand">
+                    {/* Brand becomes HOME */}
+                    <Link to="/" className="roamerBrandLink" aria-label="Roamer Home">
                         <span className="roamerBrandMark">➤</span>
-                        <span>Roamer</span>
+                        <span className="roamerBrandText">Roamer</span>
+                    </Link>
+
+                    {/* Center nav */}
+                    <div className="roamerNavCenter">
+                        <Link to="/destinations" className="roamerNavLink">
+                            Destinations
+                        </Link>
+                        <Link to="/booking/dubai" className="roamerNavLink">
+                            Booking
+                        </Link>
                     </div>
 
-                    <div className="roamerLinks">
-                        <Link to="/" className="roamerLink">Home</Link>
-                        <Link to="/destinations" className="roamerLink">Destinations</Link>
-                        <Link to="/booking/indonesia" className="roamerLink">Booking</Link>
-                        <Link to="/auth" className="roamerLink roamerLinkPill">Sign in</Link>
+                    {/* Right action */}
+                    <div className="roamerNavRight">
+                        <Link to="/auth" className="roamerLink roamerLinkPill">
+                            Sign in
+                        </Link>
                     </div>
                 </div>
 
@@ -73,8 +87,14 @@ export default function HeroCarousel() {
                         <div className="roamerSub">{slide.subtitle}</div>
 
                         <div className="roamerActions">
-                            <Link className="roamerBtn" to="/destinations">Explore</Link>
-                            <button type="button" className="roamerBtn ghost" onClick={() => setIndex((i) => (i + 1) % slides.length)}>
+                            <Link className="roamerBtn" to="/destinations">
+                                Explore
+                            </Link>
+                            <button
+                                type="button"
+                                className="roamerBtn ghost"
+                                onClick={() => setIndex((i) => (i + 1) % slides.length)}
+                            >
                                 Next
                             </button>
                         </div>

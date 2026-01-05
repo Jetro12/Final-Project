@@ -1,23 +1,27 @@
-/* ===== HERO wrapper section (teal background) ===== */
+/* =========================
+   HERO wrapper section
+========================= */
 .homeHeroSection{
     background: #44a79d;
-    padding: 44px 20px 54px;
+    padding: 0; /* EDGE-TO-EDGE */
 }
 
-/* ===== Existing hero styles (Roamer card) ===== */
+/* =========================
+   HERO card + topbar
+========================= */
 .roamerHeroStage{
-    width: min(1200px, 96vw);
-    margin: 0 auto;
-    display:flex;
-    justify-content:center;
+    width: 100vw;  /* true full width */
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .roamerHeroCard{
-    width: 100%;
-    border-radius: 18px;
+    width: min(1700px, 100vw);
+    border-radius: 0 0 18px 18px; /* optional: makes top edge flush */
     background: rgba(0, 0, 0, 0.22);
     box-shadow: 0 26px 70px rgba(0,0,0,0.35);
-    overflow:hidden;
+    overflow: hidden;
     border: 1px solid rgba(255,255,255,0.12);
 }
 
@@ -30,38 +34,63 @@
     backdrop-filter: blur(10px);
 }
 
-.roamerBrand{
+/* Brand (Roamer becomes Home) */
+.roamerBrandLink{
     display:flex;
     gap: 10px;
     align-items:center;
+    text-decoration:none;
     color: rgba(255,255,255,0.92);
-    font-weight: 800;
+    font-weight: 900;
 }
 
 .roamerBrandMark{
     display:inline-flex;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     align-items:center;
     justify-content:center;
     border-radius: 10px;
     background: rgba(255,255,255,0.12);
 }
 
-.roamerLinks{
+.roamerBrandText{
+    font-size: 18px;
+    letter-spacing: 0.2px;
+}
+
+/* Center nav */
+.roamerNavCenter{
+    flex: 1;
     display:flex;
-    gap: 16px;
-    align-items:center;
+    justify-content:center;
+    gap: 28px;
+}
+
+.roamerNavLink{
+    color: rgba(255,255,255,0.88);
+    text-decoration:none;
+    font-weight: 900;
+    font-size: 16px; /* larger */
+    letter-spacing: 0.2px;
+}
+
+.roamerNavLink:hover{
+    color: rgba(255,255,255,1);
+}
+
+/* Right action */
+.roamerNavRight{
+    display:flex;
+    justify-content:flex-end;
 }
 
 .roamerLink{
     color: rgba(255,255,255,0.78);
     text-decoration:none;
-    font-weight: 650;
+    font-weight: 800;
     font-size: 13px;
 }
-
-.roamerLink:hover{ color: rgba(255,255,255,0.95); }
 
 .roamerLinkPill{
     padding: 8px 12px;
@@ -70,9 +99,14 @@
     background: rgba(255,255,255,0.08);
 }
 
+.roamerLink:hover{ color: rgba(255,255,255,0.95); }
+
+/* =========================
+   HERO main area
+========================= */
 .roamerMain{
     position:relative;
-    height: 520px;
+    height: 560px; /* slightly taller */
     background-size: cover;
     background-position: center;
     display:flex;
@@ -133,13 +167,13 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    height: 36px;
+    height: 38px;
     padding: 0 16px;
     border-radius: 10px;
     background: rgba(43,164,240,0.85);
     border: 1px solid rgba(255,255,255,0.18);
     color: white;
-    font-weight: 800;
+    font-weight: 900;
     text-decoration:none;
     cursor:pointer;
 }
@@ -175,6 +209,7 @@
     width: 18px;
 }
 
+/* Right thumbnails */
 .roamerRight{
     position:relative;
     z-index:2;
@@ -186,8 +221,8 @@
 
 .roamerThumb{
     position:absolute;
-    width: 165px;
-    height: 220px;
+    width: 170px;
+    height: 230px;
     border-radius: 14px;
     overflow:hidden;
     border: 1px solid rgba(255,255,255,0.18);
@@ -224,8 +259,109 @@
 .roamerThumb.t2{ transform: translateX(10px) translateY(0px);  z-index: 2; opacity: 0.85; }
 .roamerThumb.t3{ transform: translateX(90px) translateY(30px); z-index: 3; opacity: 1; }
 
-/* ===== SCROLL SECTIONS (these were inside your media query by mistake) ===== */
+/* =========================
+   Search panel under hero
+========================= */
+.searchWrap{
+    width: 100%;
+    margin: 0;
+    position: relative;
+    margin-top: -42px;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px;
+}
 
+.searchCard{
+    width: min(1050px, 100%);
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 22px;
+    padding: 16px;
+    box-shadow: 0 22px 70px rgba(0,0,0,0.20);
+    backdrop-filter: blur(8px);
+}
+
+.searchTabs{
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.06);
+}
+
+.tab{
+    border: 0;
+    background: transparent;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    color: rgba(0,0,0,0.70);
+    cursor: pointer;
+}
+
+.tab.active{
+    background: white;
+    color: rgba(0,0,0,0.90);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+}
+
+/* 4 inputs: Where + Start + End + Adults */
+.searchRow{
+    display: grid;
+    grid-template-columns: 2.1fr 1fr 1fr 0.9fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.fieldBox{
+    background: white;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 12px 12px 10px;
+}
+
+.fieldLabel{
+    display:block;
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 6px;
+}
+
+.searchInput{
+    width: 100%;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.85);
+}
+
+.searchBtn{
+    width: 100%;
+    margin-top: 12px;
+    height: 44px;
+    border-radius: 16px;
+    border: 0;
+    font-weight: 900;
+    cursor: pointer;
+    background: #4eea7a;
+    color: rgba(0,0,0,0.85);
+}
+
+.searchBtn:hover{
+    filter: brightness(0.97);
+}
+
+.searchBtn:disabled{
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* =========================
+   Scroll sections
+========================= */
 .homePage{
     width: 100%;
     background: #07161c;
@@ -282,6 +418,10 @@
     margin: 10px 0 0;
     opacity: 0.75;
     line-height: 1.5;
+}
+
+.sectionWrap.sectionLight{
+    padding-top: 110px; /* pushes content down below search */
 }
 
 .cardGrid{
@@ -495,13 +635,18 @@
     padding-bottom: 18px;
 }
 
-/* Responsive */
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 980px){
     .cardGrid{ grid-template-columns: 1fr; }
     .split{ grid-template-columns: 1fr; }
     .miniGrid{ grid-template-columns: 1fr; }
     .contactSplit{ grid-template-columns: 1fr; }
     .testimonialCard{ flex-direction: column; align-items: flex-start; }
+
+    .searchRow{ grid-template-columns: 1fr; }
+    .searchWrap{ margin-top: 14px; }
 }
 
 @media (max-width: 920px){
